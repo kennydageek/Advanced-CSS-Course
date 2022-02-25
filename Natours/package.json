@@ -5,10 +5,17 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "node-sass": "^4.13.1"
+    "autoprefixer": "^10.4.2",
+    "concat": "^1.0.3",
+    "node-sass": "^7.0.1",
+    "postcss-cli": "^9.1.0"
   },
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
+    "concat:css": "concat -o css/style.concat.css css/icon-fonts.css css/style.comp.css",
+    "compress:css": "node-sass css/style.comp.css css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass concat:css compress:css"
   },
   "author": "Kennydageek",
   "license": "ISC"
